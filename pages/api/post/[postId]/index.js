@@ -1,4 +1,5 @@
 import posts from '../../../../data/posts';
+// comment
 
 export default async function handler(req, res) {
   const { postId } = req.query;
