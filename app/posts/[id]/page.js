@@ -5,7 +5,7 @@ export async function generateStaticParams() {
     const response = await fetch(url + '/api/posts');
     const data = await response.json();
 
-  const ids = data.posts.map((post) => ({
+  const ids = await data.posts.map((post) => ({
     id: post.id.toString()
   }));
 
