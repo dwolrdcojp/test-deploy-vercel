@@ -1,6 +1,8 @@
 // comment
+const url = process.env.NEXT_PUBLIC_VERCEL_URL;
+
 export async function generateStaticParams() {
-    const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
+    const response = await fetch(url + '/api/posts');
     const data = await response.json();
 
   const ids = data.posts.map((post) => ({
@@ -13,7 +15,7 @@ export async function generateStaticParams() {
 
 
 async function getPost(id) {
-    const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + `/api/post/${id}`);
+    const response = await fetch(url + `/api/post/${id}`);
     return response.json();
 }
 

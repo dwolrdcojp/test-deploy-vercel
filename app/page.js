@@ -2,8 +2,10 @@ import Link from 'next/link';
 // comment
 
 
+const url = process.env.NEXT_PUBLIC_VERCEL_URL;
+
 async function getPosts() {
-  const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
+  const response = await fetch(url + '/api/posts');
   const data = await response.json();
 
   return data.posts;
