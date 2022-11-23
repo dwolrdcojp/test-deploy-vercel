@@ -1,12 +1,16 @@
 // comment
 export async function generateStaticParams() {
-  const response = await fetch('https://' + process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
-  const data = await response.json();
+  try {
+    const response = await fetch('https://' + process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
+    const data = await response.json();
+  }
+  catch (error) {
+    console.log('Error parsing JSON:', error, response);
+  }
 
   const ids = data.posts.map((post) => ({
     id: post.id.toString()
   }));
-
 
   return ids;
 }
