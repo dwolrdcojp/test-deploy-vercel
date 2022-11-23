@@ -1,11 +1,12 @@
 // comment
 export async function generateStaticParams() {
   try {
-    const response = await fetch('https://' + process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
+    const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
     const data = await response.json();
   }
   catch (error) {
     console.log('Error parsing JSON:', error, response);
+    console.log(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
   }
 
   const ids = data.posts.map((post) => ({
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
 
 async function getPost(id) {
   try {
-    const response = await fetch('https://' + process.env.NEXT_PUBLIC_VERCEL_URL + `/api/post/${id}`);
+    const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + `/api/post/${id}`);
     return response.json();
   }
   catch (error) {
