@@ -1,4 +1,4 @@
-
+// comment
 export async function generateStaticParams() {
   const response = await fetch(process.env.NEXT_PUBLIC_VERCEL_URL + '/api/posts');
   const data = await response.json();
