@@ -1,11 +1,12 @@
 // comment
+import posts from '../../../data/posts';
 const url = process.env.NEXT_PUBLIC_VERCEL_URL;
 
-export async function generateStaticParams() {
-    const response = await fetch(url + '/api/posts');
-    const data = await response.json();
 
-  const ids = await data.posts.map((post) => ({
+export async function generateStaticParams() {
+  const allPosts = posts.result;
+
+  const ids = allPosts.map((post) => ({
     id: post.id.toString()
   }));
 
