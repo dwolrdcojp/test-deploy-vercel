@@ -2,7 +2,7 @@
 import posts from '../../../data/posts';
 const url = process.env.NEXT_PUBLIC_VERCEL_URL;
 
-
+// Cannot call next api route from this function as it's not available before building
 export async function generateStaticParams() {
   const allPosts = posts.result;
 
