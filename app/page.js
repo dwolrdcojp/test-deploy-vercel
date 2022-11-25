@@ -11,7 +11,6 @@ async function getPosts() {
   return data.posts;
 }
 
-
 export default async function Page() {
   const posts = await getPosts();
   return ( <div>

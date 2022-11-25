@@ -14,15 +14,15 @@ export async function generateStaticParams() {
 }
 
 
-
-async function getPost(id) {
-    const response = await fetch(url + `/api/post/${id}`);
-    return response.json();
+function getPost(postid) {
+  const selectedpost = posts.result.find(x => x.id === postid )
+  return selectedpost;
 }
+
 
 export default async function Post({ params, searchParams }) {
   const { id } = params; 
-  const post = await getPost(id);
+  const post = getPost(id);
 
   return (
     <>
