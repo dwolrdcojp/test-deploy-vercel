@@ -1,18 +1,20 @@
+import posts from '../data/posts';
 import Link from 'next/link';
-// comment
-
 
 const url = process.env.NEXT_PUBLIC_VERCEL_URL;
 
-async function getPosts() {
-  const response = await fetch(url + '/api/posts', { cache: 'no-store'});
-  const data = await response.json();
+function getPosts() {
+  const allPosts = posts.result;
 
-  return data.posts;
+  const ids = allPosts.map((post) => ({
+    id: post.id.toString()
+  }));
+
+  return ids;
 }
 
-export default async function Page() {
-  const posts = await getPosts();
+export default function Page() {
+  const posts = getPosts();
   return ( <div>
       <h1>Hello, Next.js!</h1>
       <br />
